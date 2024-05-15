@@ -1,9 +1,9 @@
 # Regla principal para compilar el programa
-release: examen.bin
+release: game
 
 # Compila el programa final enlazando los archivos objeto de C y ASM
-examen.bin: main.o code.o
-	gcc -o examen.bin main.o code.o -no-pie
+game: main.o code.o
+	gcc -o game main.o code.o -no-pie
 
 # Compila el archivo fuente de C en un archivo objeto
 main.o: main.c
@@ -15,4 +15,4 @@ code.o: code.asm
 
 # Limpiar los archivos compilados y el ejecutable
 clean:
-	rm -f *.o *.bin
+	rm -f *.o game
