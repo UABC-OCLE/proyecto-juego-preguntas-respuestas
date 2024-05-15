@@ -1,5 +1,3 @@
-// Código en C
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,27 +5,27 @@
 char respuestas_usuario[10];
 
 void displayMenu() {
-    printf("\n==== Quiz de Películas de Disney ====\n");
-    printf("1. Comenzar Quiz\n");
+    printf("\n==== Cuestionario de Películas de Disney ====\n");
+    printf("1. Comenzar Cuestionario\n");
     printf("2. Salir\n");
-    printf("======================================\n");
+    printf("==========================\n");
     printf("Ingrese su elección: ");
 }
 
-// Declara la función ensambladora externa
+// Declara la función externa en ensamblador
 extern int calculate_score();
 
 int main() {
-    int respuestas_correctas = 0;
-    int eleccion;
+    int correct_answers = 0;
+    int choice;
 
     do {
         displayMenu();
-        scanf("%d", &eleccion);
+        scanf("%d", &choice);
 
-        switch (eleccion) {
+        switch (choice) {
             case 1:
-                // Preguntas del quiz
+                // Preguntas del cuestionario
                 for (int i = 0; i < 10; i++) {
                     printf("\nPregunta %d:\n", i + 1);
                     switch (i) {
@@ -36,7 +34,7 @@ int main() {
                             printf("a) Blancanieves\nb) Cenicienta\nc) Ariel\nd) Bella\n");
                             break;
                         case 1:
-                            printf("¿En qué película de Disney aparece el personaje Aladdin?\n");
+                            printf("¿En qué película de Disney aparece el personaje Aladdín?\n");
                             printf("a) 'El Rey León'\nb) 'La Sirenita'\nc) 'Aladdín'\nd) 'Mulán'\n");
                             break;
                         case 2:
@@ -64,7 +62,7 @@ int main() {
                             printf("a) Sebastián\nb) Flounder\nc) Scuttle\nd) Tritón\n");
                             break;
                         case 8:
-                            printf("¿Qué princesa de Disney tiene a una rana como amiga en su película?\n");
+                            printf("¿Qué princesa de Disney tiene una rana como amiga en su película?\n");
                             printf("a) Aurora\nb) Blancanieves\nc) Tiana\nd) Rapunzel\n");
                             break;
                         case 9:
@@ -77,10 +75,10 @@ int main() {
                 }
 
                 // Llama a la función en ensamblador para calcular la puntuación
-                respuestas_correctas = calculate_score();
+                correct_answers = calculate_score();
                 
                 // Imprime o utiliza la puntuación según sea necesario
-                printf("Tu puntuación es: %d\n", respuestas_correctas);
+                printf("Tu puntuación es: %d\n", correct_answers);
 
                 break;
             case 2:
@@ -90,7 +88,7 @@ int main() {
                 printf("Elección inválida. Por favor ingrese 1 o 2.\n");
                 break;
         }
-    } while (eleccion != 2);
+    } while (choice != 2);
 
     return 0;
 }

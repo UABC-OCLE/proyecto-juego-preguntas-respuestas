@@ -1,8 +1,6 @@
-; Código en ASM
-
 section .data
-    extern respuestas_usuario   ; Declara el array externo
-    ; Define el array de respuestas correctas
+    extern respuestas_usuario   ; Declarar el array externo
+    ; Definir el array de respuestas correctas
     correct_answers db 'dcabaabacb', 0  ; Asegúrate de que las respuestas correctas coincidan con las preguntas
 
 section .text
@@ -13,19 +11,19 @@ calculate_score:
     push rbp
     mov rbp, rsp
 
-    ; Inicializa el contador de puntuación
+    ; Inicializar contador de puntuación
     mov rax, 0
 
-    ; Recorre las respuestas del usuario
+    ; Recorrer las respuestas del usuario
     mov ecx, 0  ; Contador para el bucle
-    lea rsi, [respuestas_usuario]  ; Carga la dirección del array de respuestas del usuario
+    lea rsi, [respuestas_usuario]  ; Cargar la dirección del array de respuestas del usuario
 
 answer_loop:
-    cmp ecx, 9  ; Verifica si el contador del bucle alcanza 9 (10 preguntas - 1)
-    jge end_loop  ; Si es así, sal del bucle
-    movzx rdx, byte [rsi + rcx]  ; Carga la respuesta del usuario en rdx
+    cmp ecx, 9  ; Verificar si el contador del bucle alcanza 9 (10 preguntas - 1)
+    jge end_loop  ; Si es así, salir del bucle
+    movzx rdx, byte [rsi + rcx]  ; Cargar la respuesta del usuario en rdx
 
-    ; Compara la respuesta del usuario con la respuesta correcta para cada pregunta
+    ; Comparar la respuesta del usuario con la respuesta correcta para cada pregunta
     cmp ecx, 0  ; Pregunta 1: La Bella y la Bestia (respuesta correcta: d)
     je check_answer
     cmp ecx, 1  ; Pregunta 2: Aladdín (respuesta correcta: c)
@@ -42,25 +40,25 @@ answer_loop:
     je check_answer
     cmp ecx, 7  ; Pregunta 8: La Sirenita (respuesta correcta: a)
     je check_answer
-    cmp ecx, 8  ; Pregunta 9: La Princesa y el Sapo (respuesta correcta: c)
+    cmp ecx, 8  ; Pregunta 9: Tiana y el Sapo (respuesta correcta: c)
     je check_answer
     cmp ecx, 9  ; Pregunta 10: Coco (respuesta correcta: b)
     je check_answer
 
-    ; Salta a la siguiente pregunta si la respuesta del usuario fue incorrecta
+    ; Saltar a la siguiente pregunta si la respuesta del usuario fue incorrecta
     jmp next_question
 
 check_answer:
-    cmp dl, [correct_answers + rcx]  ; Compara la respuesta del usuario con la respuesta correcta
-    je correct_answer  ; Si coinciden, salta a la etiqueta correct_answer
+    cmp dl, [correct_answers + rcx]  ; Comparar la respuesta del usuario con la respuesta correcta
+    je correct_answer  ; Si coinciden, saltar a la etiqueta correct_answer
 
 next_question:
-    inc ecx  ; Pasa a la siguiente pregunta
-    jmp answer_loop  ; Repite el bucle para la siguiente pregunta
+    inc ecx  ; Pasar a la siguiente pregunta
+    jmp answer_loop  ; Repetir el bucle para la siguiente pregunta
 
 correct_answer:
-    inc rax  ; Incrementa la puntuación si la respuesta es correcta
-    jmp next_question  ; Pasa a la siguiente pregunta
+    inc rax  ; Incrementar la puntuación si la respuesta es correcta
+    jmp next_question  ; Pasar a la siguiente pregunta
 
 end_loop:
     ; Epílogo de la función
