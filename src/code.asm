@@ -1,7 +1,7 @@
 section .data
     extern respuestas_usuario   ; Declarar el array externo
     ; Definir el array de respuestas correctas
-    correct_answers db 'dcabaabacb', 0  ; Asegúrate de que las respuestas correctas coincidan con las preguntas
+    correct_answers db 'dcabaabacb', 0  ; Respuestas correctas
 
 section .text
     global calculate_score
