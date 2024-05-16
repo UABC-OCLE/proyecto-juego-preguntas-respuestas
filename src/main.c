@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 // Declara el array globalmente para que pueda ser accedido por módulos externos
-char respuestas_usuario[10];
+char user_answers[10];
 
 void displayMenu() {
-    printf("\n==== Cuestionario de Películas de Disney ====\n");
-    printf("1. Comenzar Cuestionario\n");
+    printf("\n==== Quiz de Películas de Disney ====\n");
+    printf("1. Empezar a jugar\n");
     printf("2. Salir\n");
     printf("==========================\n");
-    printf("Ingrese su elección: ");
+    printf("Ingrese una opción: ");
 }
 
 // Declara la función externa en ensamblador
@@ -71,7 +71,7 @@ int main() {
                             break;
                     }
                     printf("Respuesta: ");
-                    scanf(" %c", &respuestas_usuario[i]);
+                    scanf(" %c", &user_answers[i]);
                 }
 
                 // Llama a la función en ensamblador para calcular la puntuación

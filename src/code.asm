@@ -1,5 +1,5 @@
 section .data
-    extern respuestas_usuario   ; Declarar el array externo
+    extern user_answers   ; Declarar el array externo
     ; Definir el array de respuestas correctas
     correct_answers db 'dcabaabacb', 0  ; Respuestas correctas
 
@@ -16,10 +16,10 @@ calculate_score:
 
     ; Recorrer las respuestas del usuario
     mov ecx, 0  ; Contador para el bucle
-    lea rsi, [respuestas_usuario]  ; Cargar la dirección del array de respuestas del usuario
+    lea rsi, [user_answers]  ; Cargar la dirección del array de respuestas del usuario
 
 answer_loop:
-    cmp ecx, 9  ; Verificar si el contador del bucle alcanza 9 (10 preguntas - 1)
+    cmp ecx, 10  ; Verificar si el contador del bucle alcanza 9 (10 preguntas - 1)
     jge end_loop  ; Si es así, salir del bucle
     movzx rdx, byte [rsi + rcx]  ; Cargar la respuesta del usuario en rdx
 
