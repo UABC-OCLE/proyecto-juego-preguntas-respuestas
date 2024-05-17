@@ -38,7 +38,6 @@ verificación:
 incremento:
     inc rax ;aqui aumentamos en 1 el rax
     jmp verificación
-    ret
 
 termino:
     cmp rax, 0
@@ -47,17 +46,18 @@ termino:
     jae Aprobado
     cmp rax, 2
     jbe Reprobado
-    ret
 
 ;Aquí es donde se envian los resultados
 Aprobado:
     mov rdi, msg1
-    ret
 
 Reprobado:
     mov rdi, msg2
-    ret
 
 cero:
     mov rdi, msg3
+
+resultados:
+    mov rdi, 0
+    syscall
     ret
