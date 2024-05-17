@@ -22,7 +22,7 @@ global comprobante_resultados
 
 
 comprobante_resultados:
-    xor rax, 0
+    xor rax, rax
     mov rcx, 0 ;este mismo contador indicara el final de los elementos de la tabla.
 
 verificación:
