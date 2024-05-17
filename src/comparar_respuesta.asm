@@ -22,16 +22,17 @@ global comprobante_resultados
 
 
 comprobante_resultados:
-    xor rax, rax
-    mov rcx, 5 ;este mismo contador indicara el final de los elementos de la tabla.
+    xor rax, 0
+    mov rcx, 0 ;este mismo contador indicara el final de los elementos de la tabla.
 
 verificación:
     ;aqui es donde compararemos tanto el array de preguntas y el de respuestas, primero inicializando el contador, se va a inicializar en 0 para ir sumando de forma adecuada.
-    cmp rdi, rsi ;rdi es el de las respuestas del usuario, rsi el de las respuestas correctas.
+    mov al, [rdi + rcx] ;almacena respuesta de usuario rdi[rcx] (como si fuese rdi[i o 0 pues])
+    cmp al, [rsi + rcx] ;ahora la comparar con el elemento rsi[rcx] de las respuestas correctas
     je incremento ;iremos a la linea donde se incrementa el rax
     inc rsi
     inc rdi
-    cmp rax, rcx ;aqui es donde verificamos si la cadena ha terminado
+    cmp rcx, 5 ;aqui es donde verificamos si la cadena ha terminado
     je termino ;saltamos a la parte final 
     jmp verificación ;saltamos de nueva cuenta al verificador para poder seguir iterando
 
