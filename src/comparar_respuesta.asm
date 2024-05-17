@@ -9,10 +9,6 @@
 ;           2.3) Una vez impresos los mensajes, deberia funcionar correctamente, eso espero.
 
 
-section .data
-    msg1 db 'Aprobado. Aciertos = ', 0
-    msg2 db 'Reprobado. Aciertos = : ', 0
-    msg3 db 'Wow. Creo que toca estudiar un poco, tuviste cero aciertos...', 0
 
 
 
@@ -30,8 +26,7 @@ verificación:
     mov al, [rdi + rcx] ;almacena respuesta de usuario rdi[rcx] (como si fuese rdi[i o 0 pues])
     cmp al, [rsi + rcx] ;ahora la comparar con el elemento rsi[rcx] de las respuestas correctas
     je incremento ;iremos a la linea donde se incrementa el rax
-    inc rsi
-    inc rdi
+    inc rcx
     cmp rcx, 5 ;aqui es donde verificamos si la cadena ha terminado
     je termino ;saltamos a la parte final 
     jmp verificación ;saltamos de nueva cuenta al verificador para poder seguir iterando
@@ -51,14 +46,23 @@ termino:
 ;Aquí es donde se envian los resultados
 Aprobado:
     mov rdi, msg1
+    jmp resultados
 
 Reprobado:
     mov rdi, msg2
+    jmp resultados
 
 cero:
     mov rdi, msg3
+    jmp resultados
 
 resultados:
     mov rdi, 0
     syscall
     ret
+
+
+section .rodata
+    msg1: db 'Aprobado. Aciertos = ', 0
+    msg2: db 'Reprobado. Aciertos = ', 0
+    msg3: db 'Wow. Creo que toca estudiar un poco, tuviste cero aciertos...', 0
