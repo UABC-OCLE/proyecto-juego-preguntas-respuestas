@@ -7,7 +7,7 @@ juego_preguntas: main.o comparar_respuesta.o
 
 # Compila el archivo fuente de C en un archivo objeto
 main.o: main.c
-	gcc -c main.c -o main.o
+	gcc -Wall -c main.c -o main.o
 
 # Compila el archivo fuente de ASM en un archivo objeto
 comparar_respuesta.o: comparar_respuesta.asm
@@ -17,6 +17,3 @@ comparar_respuesta.o: comparar_respuesta.asm
 clean:
 	rm -f *.o juego_preguntas
 
-#correr programa
-run:
-	./juego_preguntas
