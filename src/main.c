@@ -7,7 +7,7 @@ Por ende, voy hacerla de capitales de America*/
 
 #include <stdio.h>
 
-extern void verificador(char Usuelec[], char CorrectRes[]);
+extern void comprobante_resultados(char Usuelec[], char CorrectRes[]);
 
 int main(){
     char usuRes; //queremos pedirle al usuario una respuesta que se almacenara aqui
@@ -48,7 +48,7 @@ int main(){
 
     //una vez hechas las preguntas, lo que ahora tenemos que hacer es irnos a ensamblador para las respuestas y mensajes.
 
-    verificador(Usuelec, CorrectRes);
+    comprobante_resultados(Usuelec, CorrectRes);
 
     return 0;
 }

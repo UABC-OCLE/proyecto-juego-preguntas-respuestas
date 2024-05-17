@@ -18,14 +18,14 @@ section .data
 
 section .text ;obligatorio iniciar con esto mismo
 
-global verificador
+global comprobante_resultados
 
 
-contador:
-    mov rax, 0
+comprobante_resultados:
+    xor rax, rax
     mov rcx, 5 ;este mismo contador indicara el final de los elementos de la tabla.
 
-verificador:
+verificación:
     ;aqui es donde compararemos tanto el array de preguntas y el de respuestas, primero inicializando el contador, se va a inicializar en 0 para ir sumando de forma adecuada.
     cmp rdi, rsi ;rdi es el de las respuestas del usuario, rsi el de las respuestas correctas.
     je incremento ;iremos a la linea donde se incrementa el rax
@@ -33,13 +33,12 @@ verificador:
     inc rdi
     cmp rax, rcx ;aqui es donde verificamos si la cadena ha terminado
     je termino ;saltamos a la parte final 
-    jmp verificador ;saltamos de nueva cuenta al verificador para poder seguir iterando
-
+    jmp verificación ;saltamos de nueva cuenta al verificador para poder seguir iterando
 
 incremento:
     inc rax ;aqui aumentamos en 1 el rax
-    jmp verificador
-
+    jmp verificación
+    ret
 
 termino:
     cmp rax, 0
@@ -48,7 +47,7 @@ termino:
     jae Aprobado
     cmp rax, 2
     jbe Reprobado
-
+    ret
 
 ;Aquí es donde se envian los resultados
 Aprobado:
