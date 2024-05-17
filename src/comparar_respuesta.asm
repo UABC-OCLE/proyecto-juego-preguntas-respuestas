@@ -10,9 +10,9 @@
 
 
 section .data
-    msg1 db 'Aprobado. De 5 preguntas tuviste un total de aciertos igual a: ', 0
-    msg2 db 'Reprobado. De 5 preguntas tuviste un total de aciertos igual a: ', 0
-    msg3 db 'Wow. Creo que toca estudiar un poco, tuviste 0 aciertos...', 0
+    msg1 db 'Aprobado. Aciertos = ', 0
+    msg2 db 'Reprobado. Aciertos = : ', 0
+    msg3 db 'Wow. Creo que toca estudiar un poco, tuviste cero aciertos...', 0
 
 
 
