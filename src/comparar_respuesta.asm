@@ -33,7 +33,11 @@ verificación:
 
 incremento:
     inc rax ;aqui aumentamos en 1 el rax
+    inc rcx ;el rcx se aumenta pues porque ocupamos que aumente realmente ya que si no pues nos quedamos que si respondes de forma incorrecta solo ahi avanzara
+    cmp rcx, 5 ;comparamos si ya termino rcx con todo el arreglo
+    je termino
     jmp verificación
+
 
 termino:
     cmp rax, 0

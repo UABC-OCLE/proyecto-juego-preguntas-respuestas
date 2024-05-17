@@ -17,5 +17,6 @@ comparar_respuesta.o: comparar_respuesta.asm
 clean:
 	rm -f *.o juego_preguntas
 
+#correr programa
 run:
 	./juego_preguntas
