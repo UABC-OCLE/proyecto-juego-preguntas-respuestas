@@ -18,9 +18,10 @@ section .text ;obligatorio iniciar con esto mismo
 
 comprobante_resultados:
     xor rax, rax
+    xor rbx, rbx
     xor rcx, rcx ;este mismo contador indicara el final de los elementos de la tabla.
 
-verificación:
+verificacion:
     cmp rcx, 5 ;aqui es donde verificamos si la cadena ha terminado
     je .termino ;saltamos a la parte final 
     ;aqui es donde compararemos tanto el array de preguntas y el de respuestas, primero inicializando el contador, se va a inicializar en 0 para ir sumando de forma adecuada.
@@ -28,22 +29,22 @@ verificación:
     cmp al, [rsi + rcx] ;ahora la comparar con el elemento rsi[rcx] de las respuestas correctas
     je .incremento ;iremos a la linea donde se incrementa el rax
     inc rcx
-    jmp verificación ;saltamos de nueva cuenta al verificador para poder seguir iterando
+    jmp verificacion ;saltamos de nueva cuenta al verificador para poder seguir iterando
 
 .incremento:
-    inc rax ;aqui aumentamos en 1 el rax
+    inc rbx ;aqui aumentamos en 1 el rax
     cmp rcx, 5 ;comparamos si ya termino rcx con todo el arreglo
     je .termino
     inc rcx ;el rcx se aumenta pues porque ocupamos que aumente realmente ya que si no pues nos quedamos que si respondes de forma incorrecta solo ahi avanzara
-    jmp verificación
+    jmp verificacion
 
 
 .termino:
-    cmp rax, 0
+    cmp rbx, 0
     je .resultados_cero
-    cmp rax, 3
+    cmp rbx, 3
     jae .resultados_aprobado
-    cmp rax, 2
+    cmp rbx, 2
     jbe .resultados_reprobado
 
 ;Aquí es donde se envian los resultados e imprimen
