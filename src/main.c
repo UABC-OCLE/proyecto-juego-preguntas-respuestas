@@ -25,7 +25,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                // Preguntas del cuestionario
+                // Preguntas del quiz
                 for (int i = 0; i < 10; i++) {
                     printf("\nPregunta %d:\n", i + 1);
                     switch (i) {

@@ -7,7 +7,7 @@ section .text
     global calculate_score
 
 calculate_score:
-    ; Prólogo de la función
+    ; Inicio de la función
     push rbp
     mov rbp, rsp
 
@@ -19,7 +19,7 @@ calculate_score:
     lea rsi, [user_answers]  ; Cargar la dirección del array de respuestas del usuario
 
 answer_loop:
-    cmp ecx, 10  ; Verificar si el contador del bucle alcanza 9 (10 preguntas - 1)
+    cmp ecx, 10  ; Verificar si el contador del bucle alcanza 10 preguntas
     jge end_loop  ; Si es así, salir del bucle
     movzx rdx, byte [rsi + rcx]  ; Cargar la respuesta del usuario en rdx
 
@@ -61,6 +61,6 @@ correct_answer:
     jmp next_question  ; Pasar a la siguiente pregunta
 
 end_loop:
-    ; Epílogo de la función
+    ; Fin de la función
     pop rbp
     ret
