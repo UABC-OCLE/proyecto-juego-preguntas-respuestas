@@ -7,12 +7,12 @@ Por ende, voy hacerla de capitales de America*/
 
 #include <stdio.h>
 
-extern void comprobante_resultados(char Usuelec[], char CorrectRes[]);
+extern int comprobante_resultados(char Usuelec[], char CorrectRes[]);
 
 int main(){
     char CorrectRes[5] = {'a', 'b', 'a', 'd', 'c'}; //las respuestas correctas aqui yaceran, porque si no tendria que estarse utilizando mucho if y else que complicarian el codigo
-    char Usuelec[5]; //para las respuestas que el usuario anote, tomando inspiracion del ejemplo puesto por el profe me parecio buena idea agregarlo
-    //sin embargo, lo que yo voy a hacer es con el usuRes el recibir las respuestas que se almacenaran en Usuelec.
+    char Usuelec[5]; //para las respuestas que el usuario escriba.
+    float Puntaje;
 
     printf("\n¿Cuál es la capital de México?\n");
     printf("\na) Ciudad de México   b) Baja California   c) Guadalajara   d) Acapulco\n");
@@ -46,9 +46,24 @@ int main(){
     printf("                   *-*-*-*-*-*-*-*-*-*-*-*\n");
     printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\n");
 
-    comprobante_resultados(Usuelec, CorrectRes);
+    Puntaje = comprobante_resultados(Usuelec, CorrectRes);
 
-    printf("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    if (Puntaje >= 3){
+        printf("                  Aprobado. FELICIDADES! \n                 Total de Aciertos: %1.0f / 5", Puntaje);
+        printf("\n                    Porcentaje: %1.2f", (Puntaje/5)*100);         
+    }
+
+    else if (Puntaje == 0){
+        printf("                Wow... Intentalo otra vez! \n                 Total de Aciertos: %1.0f / 5", Puntaje);
+        printf("\n                    Porcentaje: %1.2f", (Puntaje/5)*100);        
+    }
+
+    else if (Puntaje <= 2){
+        printf("                  Reprobado. Buen Intento! \n                 Total de Aciertos: %1.0f / 5", Puntaje);
+        printf("\n                    Porcentaje: %1.2f", (Puntaje/5)*100);        
+    }
+
+    printf("\n\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
     printf("                   *-*-*-*-*-*-*-*-*-*-*-*\n");
     printf("\n\n\n");
 
