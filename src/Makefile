@@ -1,7 +1,7 @@
 release: juego_preguntas_respuestas.bin
 
 juego_preguntas_respuestas.bin: main.o preguntas_respuestas.o
-	gcc -g -o juego_preguntas_respuestas.bin main.o preguntas_respuestas.o -no-pie
+	gcc -g -o juego_preguntas_respuestas.bin main.o preguntas_respuestas.o -no-pie -lncurses
 
 main.o: main.c
 	gcc -c main.c -o main.o
