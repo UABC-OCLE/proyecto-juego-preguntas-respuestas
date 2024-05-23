@@ -1,22 +1,19 @@
+release: juego_preguntas_respuestas.bin
 
-release: juego_preguntas
+juego_preguntas_respuestas.bin: main.o preguntas_respuestas.o
+	gcc -g -o juego_preguntas_respuestas.bin main.o preguntas_respuestas.o -no-pie -lncurses
 
-# Compila el programa final enlazando los archivos objeto de C y ASM
-juego_preguntas: main.o comparar_respuesta.o
-	gcc -o juego_preguntas main.o comparar_respuesta.o -no-pie
-
-# Compila el archivo fuente de C en un archivo objeto
 main.o: main.c
 	gcc -c main.c -o main.o
 
-# Compila el archivo fuente de ASM en un archivo objeto
-comparar_respuesta.o: comparar_respuesta.asm
-	nasm -f elf64 comparar_respuesta.asm -o comparar_respuesta.o
+preguntas_respuestas.o: preguntas_respuestas.asm
+	nasm -f elf64 preguntas_respuestas.asm -o preguntas_respuestas.o
 
-# Limpiar los archivos compilados y el ejecutable
 clean:
-	rm -f *.o juego_preguntas
+	rm main.o preguntas_respuestas.o juego_preguntas_respuestas.bin
 
-#correr programa
 run:
-	./juego_preguntas
+	./juego_preguntas_respuestas.bin
+
+gdb:
+	gdb ./juego_preguntas_respuestas.bin
